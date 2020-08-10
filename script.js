@@ -171,23 +171,3 @@ outerModal.addEventListener('click', outsideClick);
 window.addEventListener('keydown', handleEscKey);
 
 btnModal.addEventListener('click', openModal);
-
-// const orders = [];  these if (e.target.matches('button.addToOrder')) {   
-//     const orderFood = e.target.closest('.food-item');
-//     // Creating a new object for the order
-//     const anOrder = {
-//         id: orderFood.querySelector('.food').textContent,
-//         title: orderFood.querySelector('.title').textContent,
-//         price: orderFood.querySelector('.price').textContent
-//     }
-//     // Pushing the objects into the orders array
-//     orders.push(anOrder);
-//     const orderHtml = `   
-//         <li class="food-item">
-//             <div class="food" id="${anOrder.id}">
-//                 <div>${anOrder.title}</div>
-//                 <span>x1</span>
-//                 <span class="price">${anOrder.price}</span>
-//             </div>
-//         </li>
-//     `;
