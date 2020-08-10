@@ -2,7 +2,7 @@
 const innerModal = document.querySelector('.inner-modal');
 const outerModal = document.querySelector('.outer-modal');
 const btnModal = document.querySelector('.btn-confirm');
-const checkboxes = document.querySelector('input[type="checkbox"]');
+const checkboxes = document.querySelectorAll('input');
 const checkbox1 = document.querySelector('#spicy');
 const checkbox2 = document.querySelector('#vegetarian');
 
@@ -58,7 +58,6 @@ const foods = [
 list.innerHTML = myHtml;
 
 //Filter the list to see only the vegetarian meals, or only the spicy ones
-// const orderList = document.querySelector('.order-list');
  
 checkbox1.addEventListener('change', function () {
     if (this.checked) {
@@ -71,7 +70,7 @@ checkbox1.addEventListener('change', function () {
                 <button>Add</button>
             </li>`).join('');
             list.innerHTML = mySpicyFood;
-        
+        console.log(mySpicyFood);
     } 
 });
 
@@ -80,56 +79,56 @@ checkbox2.addEventListener('change', function () {
         const myVegetarian = foods.filter(food => food.vegetarian)
         const myVegetarianFood = myVegetarian.map(items =>
                   `
-                <li class="list-items">
-                    <p class="first">${items.title}</p>
-                    <p class="second">${items.price}</p>
-                    <button>Add</button>
-                </li>`).join('');
+            <li class="list-items">
+                <p class="first">${items.title}</p>
+                <p class="second">${items.price}</p>
+                <button>Add</button>
+            </li>`).join('');
 
-                list.innerHTML = myVegetarianFood;
+        list.innerHTML = myVegetarianFood;
     }
 });
 
-// checkboxes.addEventListener('change', function () {
-//     if (this.checked) { 
-//         const bothVegSpic = foods.filter(food => food.spicy && food.vegetarian)
+// checkboxes.forEach(element => element.addEventListener('change', function () {
+//     if (element.checked) { 
+//         const bothVegSpic = foods.filter(food => food.spicy && food.vegetarian);
 //         const myBothFood = bothVegSpic.map(items =>
 //                 `
-//             <li class="list-items">
+//             <li class="list-items value="${items.id}">
 //                 <p>${items.title}</p>
 //                 <p>${items.price}</p>
 //                 <button>Add</button>
 //             </li>`).join('');
 //             list.innerHTML = myBothFood;
 //     } 
-// });
+// }));
 
 // Add a meal to the cart
-const orderList = document.querySelector('.order-list');
-const addbtn = e => {
-    e.preventDefault();
-    const meals = [];
-    if (e.target.matches('.addbtn')) {
-        const meal = e.target.closest('.items');
-        const id = meal.dataset.id;
-        const food = foods.find(singleRecipe => singleRecipe.id === id);
-		const foodTitle = meal.querySelector('.first').textContent;
-		const foodPrice = meal.querySelector('.second').textContent;
-            const newMeal = `
-            <li class="list3" data-id="${food}">
-                <p>${foodTitle}</p>
-                <p>${foodPrice}</p>
-            </li>`;
-            ;
+// const orderList = document.querySelector('.order-list');
+// const addbtn = e => {
+//     e.preventDefault();
+//     const meals = [];
+//     if (e.target.matches('.addbtn')) {
+//         const meal = e.target.closest('.items');
+//         const id = meal.dataset.id;
+//         const food = foods.find(singleRecipe => singleRecipe.id === id);
+// 		const foodTitle = meal.querySelector('.first').textContent;
+// 		const foodPrice = meal.querySelector('.second').textContent;
+//             const newMeal = `
+//             <li class="list3" data-id="${food}">
+//                 <p>${foodTitle}</p>
+//                 <p>${foodPrice}</p>
+//             </li>`;
+//             ;
 
-            meals.push(newMeal);
+//             meals.push(newMeal);
 
-            orderList.insertAdjacentHTML('afterbegin', meals)
+//             orderList.insertAdjacentHTML('afterbegin', meals)
         
-    }
-}
+//     }
+// }
 
-window.addEventListener('click', addbtn);
+// window.addEventListener('click', addbtn);
 
 //Open modal 
 const openModal = () => {

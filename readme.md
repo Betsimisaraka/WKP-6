@@ -1,92 +1,19 @@
-# WKP6 - Hungry Student Restaurant
+# My weekend project wpk-6
 
-### Another website about food, really...
+1. ### In a few sentences, explain the structure of your project .
 
-Yes, but who doesn't like food? 😄
+    In this project, the first thing I did is I use map method to get all the items from the object. After that I specified the spicy food and the vegetarian food.
 
-This time, we're going to build a food delivery app, where we can see the meal options, select them, and see the result in our cart.
+1. ### If you had more time, what area of your work would you improve?
 
-### Users must be able to :
+   If I had more time I would have improve the card for the order because when I click the add button I only get the same thing with each button and more css style with the food list, the order and the modal.
+1. ### Did you learn anything new while working on this project?
 
--   See a list of five meal options
--   See the prices of each meal option
--   Add a meal to the cart
--   Filter the list to see only the vegetarian meals, or only the spicy ones
--   See their total bill
--   “Check out” - this doesn’t have to process payment, just simply display
-    a message stating the order as been confirmed.
+    I didn't really learn anything new but it is quite interesting how the map and the filter work.
 
-### Bonus :
+1. ### What was the most challenging part for you?
+    The most challenging part for me is to get the list to appear in the order and every time the user click add it's updated the price.
 
--   Change the quantity of meals in the cart
--   Remove a meal from the cart
+1. ### Would you like a new explanation about a specific topic?
 
-Here is an example of layout :
-
-![assets/1.png](assets/1.png)
-
-And when I click on the _Confirm Order_ button, I can display a message to show the total bill from the order.
-
-![assets/2.png](assets/2.png)
-
-### Food list
-
-Here's the food object :
-
-```jsx
-const foods = [
-	{
-		id: 'ravitoto',
-		price: 5000,
-		title: 'Ravitoto',
-		spicy: true,
-		vegetarian: false,
-	},
-	{
-		id: 'pasta',
-		price: 4000,
-		title: 'Pasta',
-		spicy: true,
-		vegetarian: true,
-	},
-	{
-		id: 'burger',
-		price: 5000,
-		title: 'Burger',
-		spicy: false,
-		vegetarian: false,
-	},
-	{
-		id: 'rice',
-		price: 2000,
-		title: 'Rice and Leaves',
-		spicy: false,
-		vegetarian: true,
-	},
-	{
-		id: 'mofogasy',
-		price: 500,
-		title: 'Mofogasy',
-		spicy: false,
-		vegetarian: false,
-	},
-];
-```
-
-The **id** here is a unique string, is role is to identify an element inside the list. The title will be the food name shown to the user.
-
-You'll also have an **order** collection, where you will push a food object every time the user add an element to his order.
-
-### Maps, Filter, Reduce, and other friends
-
--   To generate any list of element (for example, the list of food), **Map** is really useful.
--   To get the full price of list of items, **Reduce** is the perfect use case.
--   To count how many times an item is in a list, you could **Filter** the list and see the length of the result, or use a **Reduce** to count all of the instances.
-
-But this is just one way to think about that. Feel free to try any other logic you have in mind.
-
-### 💡Tips
-
--   Don't forget to clean your code, and update your readme before Monday morning.
-
-Good luck!
+    Yes definetly, I want more axplanation about how the reduce work to update the total price. And also when I checked both checkbox it doesn't work so I need some explanation on that. 
