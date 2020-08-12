@@ -44,6 +44,16 @@ h2 {
     justify-content: space-between
 }
 
+.order {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.totalPrice {
+    align-self: flex-end;
+}
+
 .card, .order {
     background-color: lightgray;
     padding: 2rem;

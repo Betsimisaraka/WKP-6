@@ -1,10 +1,5 @@
 //The object
-const innerModal = document.querySelector('.inner-modal');
-const outerModal = document.querySelector('.outer-modal');
-const btnModal = document.querySelector('.btn-confirm');
-const inputElement = document.querySelectorAll('input');
-const checkbox1 = document.querySelector('#spicy');
-const checkbox2 = document.querySelector('#vegetarian');
+
 
 const foods = [
 	{
@@ -47,68 +42,45 @@ const foods = [
 // See a list of five meal options
 // To generate any list of element (for example, the list of food), Map is really useful.
  const list = document.querySelector('.items');
-const handleFood = () => {
-    const myHtml = foods.map(food => `
-        <li class="list1" data-id="${food.id}">
-            <p class="first">${food.title}</p>
-            <p class="second">${food.price}</p>
-            <button class="addbtn">Add</button>
-        </li>`).join('');
 
-    list.innerHTML = myHtml;
+ const innerModal = document.querySelector('.inner-modal');
+const outerModal = document.querySelector('.outer-modal');
+const btnModal = document.querySelector('.btn-confirm');
+const inputElement = document.querySelectorAll('input');
+const spicy = document.querySelector('#spicy');
+const vegetarian = document.querySelector('#vegetarian');
+
+
+const handleFood = () => {
+
+    let foodFiltered = [...foods];
+
+    if (spicy.checked) {
+        foodFiltered = foodFiltered.filter(food => food.spicy);
+    }
+
+    if (vegetarian.checked) {
+        foodFiltered = foodFiltered.filter(food => food.vegetarian);
+    }
+
+    const myHtml = 
+        foodFiltered.map(food => {
+            return `
+            <li class="list1">
+                <p class="first">${food.title}</p>
+                <p class="second">${food.price}</p>
+                <button value="${food.id}" class="addbtn">Add</button>
+            </li>`
+        }).join('');
+
+        list.innerHTML = myHtml;
 }
 
-handleFood();
+spicy.addEventListener('change', handleFood);
+vegetarian.addEventListener('change', handleFood);
 
 //Filter the list to see only the vegetarian meals, or only the spicy ones
  
-checkbox1.addEventListener('change', function () {
-    if (this.checked) {
-        const myfood = foods.filter(food => food.spicy);
-        const mySpicyFood = myfood.map(item =>
-                `
-            <li class="list-items">
-                <p class="first">${item.title}</p>
-                <p class="second">${item.price}</p>
-                <button>Add</button>
-            </li>`).join('');
-            list.innerHTML = mySpicyFood;
-        console.log(mySpicyFood);
-    } else {
-        handleFood();
-    }
-});
-
-checkbox2.addEventListener('change', function () {
-    if (this.checked) { 
-        const myVegetarian = foods.filter(food => food.vegetarian)
-        const myVegetarianFood = myVegetarian.map(items =>
-                  `
-            <li class="list-items">
-                <p class="first">${items.title}</p>
-                <p class="second">${items.price}</p>
-                <button>Add</button>
-            </li>`).join('');
-
-        list.innerHTML = myVegetarianFood;
-    } else {
-        handleFood();
-    }
-});
-
-inputElement.forEach(Element => Element.addEventListener('change', function () {
-    if (checkbox1.checked && checkbox2.checked) {
-        const bothVegSpic = foods.filter(food => food.spicy && food.vegetarian);
-        const myBothFood = bothVegSpic.map(items =>
-                `
-            <li class="list-items value="${items.id}">
-                <p>${items.title}</p>
-                <p>${items.price}</p>
-                <button>Add</button>
-            </li>`).join('');
-            list.innerHTML = myBothFood;
-    } 
-}));
 
 // Add a meal to the cart
 // const orderList = document.querySelector('.order-list');
@@ -137,6 +109,28 @@ inputElement.forEach(Element => Element.addEventListener('change', function () {
 
 // window.addEventListener('click', addbtn);
 
+// const orders = [];
+//  if (e.target.matches('button.addToOrder')) {   
+//     const orderFood = e.target.closest('.food-item');
+//     // Creating a new object for the order
+//     const anOrder = {
+//         id: orderFood.querySelector('.food').textContent,
+//         title: orderFood.querySelector('.title').textContent,
+//         price: orderFood.querySelector('.price').textContent
+//     }
+//     // Pushing the objects into the orders array
+//     orders.push(anOrder);
+//     const orderHtml = `   
+//         <li class="food-item">
+//             <div class="food" id="${anOrder.id}">
+//                 <div>${anOrder.title}</div>
+//                 <span>x1</span>
+//                 <span class="price">${anOrder.price}</span>
+//             </div>
+//         </li>
+//     `;
+
+
 //Open modal 
 const openModal = () => {
     innerModal.innerHTML = `
@@ -145,7 +139,7 @@ const openModal = () => {
         <p>
             Your order is comfirmed
         </p>
-        <p>The total amount is: </p>
+        <p>The total amount is:  </p>
 	</div>
     `;
     outerModal.classList.add('open');
